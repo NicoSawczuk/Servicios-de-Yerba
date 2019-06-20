@@ -40,7 +40,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         comboUnidad = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaServicios = new javax.swing.JList();
         jLabel4 = new javax.swing.JLabel();
         agregarTipoServicio = new java.awt.Button();
 
@@ -59,7 +59,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
 
         jLabel3.setText("Unidad");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaServicios);
 
         jLabel4.setText("Servicios");
 
@@ -156,8 +156,8 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList listaServicios;
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtDescripcion;
     // End of variables declaration//GEN-END:variables

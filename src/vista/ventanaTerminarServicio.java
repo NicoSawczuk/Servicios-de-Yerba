@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controlador;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 
 /**
@@ -23,6 +24,13 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
         initComponents();
         this.c=c;
         this.vAnterior=vAnterior;
+        limpiar();
+    }
+    
+    public void limpiar(){
+        this.txtPuntaje.setText("");
+        DefaultComboBoxModel comboProd = new DefaultComboBoxModel(this.c.listarProductores().toArray());
+        this.comboProductor.setModel(comboProd);
     }
 
     /**
@@ -44,7 +52,7 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
         txtPuntaje = new javax.swing.JTextField();
         comboProductor = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaServicios = new javax.swing.JList<>();
+        listaServicios = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -152,7 +160,7 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
-    private javax.swing.JList<String> listaServicios;
+    private javax.swing.JList listaServicios;
     private java.awt.TextField txtCosto;
     private javax.swing.JTextField txtPuntaje;
     // End of variables declaration//GEN-END:variables

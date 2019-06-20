@@ -66,7 +66,7 @@ public class ventanaAgregarPrestador extends javax.swing.JFrame {
         label8 = new java.awt.Label();
         comboTipoServicio = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaPrestador = new javax.swing.JList<>();
+        listaPrestador = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -237,7 +237,7 @@ public class ventanaAgregarPrestador extends javax.swing.JFrame {
     private java.awt.Label label6;
     private java.awt.Label label7;
     private java.awt.Label label8;
-    private javax.swing.JList<String> listaPrestador;
+    private javax.swing.JList listaPrestador;
     private javax.swing.JTextField txtCUIT;
     private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtNroInscrip;
