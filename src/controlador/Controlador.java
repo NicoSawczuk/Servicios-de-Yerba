@@ -26,6 +26,9 @@ public class Controlador {
         this.persistencia = persistencnia;
     }
     
+    
+    
+    //Agregar
     public void agregarPrestador(int cuit, String razonSocial, int numeroInym, String domicilioLegal){
         this.persistencia.iniciarTransaccion();
         Prestador p = new Prestador(cuit, razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase());
@@ -55,7 +58,7 @@ public class Controlador {
         }
         
     
-    
+    //Listar
     public List listarPrestadores(){
         return this.persistencia.buscarTodos(Prestador.class);
     }
@@ -72,8 +75,13 @@ public class Controlador {
         return this.persistencia.buscarTodos(Unidad.class);
     }
     
+    public List listarTiposServicios(){
+        return this.persistencia.buscarTodos(TipoServicio.class);
+    }
     
     
     
+    
+    //Insertar
     
 }

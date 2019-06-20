@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controlador;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 

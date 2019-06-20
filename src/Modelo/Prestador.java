@@ -56,10 +56,12 @@ public class Prestador extends Persona{
         this.serviciosPrestador = serviciosPrestador;
     }
     
-    /*@Override
+    @Override
     public String toString(){
-        return super.getCuit()+" ";
-    }*/
+        int cui = super.getCuit();
+        String cuit = String.valueOf(cui);
+        return cuit;
+    }
     
     
     

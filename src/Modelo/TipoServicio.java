@@ -45,6 +45,37 @@ public class TipoServicio {
         this.descripcion=descripcion;
     }
     
+    //Getters and Setters
+
+    public int getTipoServicio() {
+        return tipoServicio;
+    }
+
+    public void setTipoServicio(int tipoServicio) {
+        this.tipoServicio = tipoServicio;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    
+    @Override
+    public String toString(){
+        return this.descripcion;
+    }
     
     
     

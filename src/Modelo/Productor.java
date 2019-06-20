@@ -31,7 +31,13 @@ public class Productor extends Persona{
     }
   
     
-    
+    @Override
+    public String toString(){
+        int g = super.getCuit();
+        String cuit = String.valueOf(g);
+        
+        return cuit;
+    }
     
     
 }
