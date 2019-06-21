@@ -162,14 +162,7 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         //Creamos las variables que son de tipo entero y las casteamos a String para capturar el texto del TextField
-        String cuit2 = txtCUIT.getText();
-        int cuit = Integer.parseInt(cuit2);
-        String nroInscripcion2 = txtNroInscrip.getText();
-        int nroInscripcion = Integer.parseInt(nroInscripcion2);
-        nroInscripcion2 = txtNroInscrip.getText();
-        String cantHect = txtCantHect.getText();
-        double cantidadHectarea = Double.parseDouble(cantHect);
-        this.c.agregarProductor(cuit, this.txtRazonSocial.getText(), nroInscripcion, this.txtDomicilio.getText(), cantidadHectarea);
+        this.c.agregarProductor(this.txtCUIT.getText(), this.txtRazonSocial.getText(), this.txtNroInscrip.getText(), this.txtDomicilio.getText(), this.txtCantHect.getText());
         limpiar();
     }//GEN-LAST:event_botonAgregarActionPerformed
 

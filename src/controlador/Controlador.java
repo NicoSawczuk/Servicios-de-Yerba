@@ -29,18 +29,18 @@ public class Controlador {
     
     
     //Agregar
-    public void agregarPrestador(int cuit, String razonSocial, int numeroInym, String domicilioLegal){
+    public void agregarPrestador(String cuit, String razonSocial, String numeroInym, String domicilioLegal){
         this.persistencia.iniciarTransaccion();
-        Prestador p = new Prestador(cuit, razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase());
+        Prestador p = new Prestador(cuit.toUpperCase(), razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase());
         this.persistencia.insertar(p);
         
         this.persistencia.confirmarTransaccion();
     }
     
-    public void agregarProductor(int cuit, String razonSocial, int numeroInym, String domicilioLegal, double cantHectarea){
+    public void agregarProductor(String cuit, String razonSocial, String numeroInym, String domicilioLegal, String cantHectarea){
         this.persistencia.iniciarTransaccion();
         
-        Productor p = new Productor(cuit, razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase(), cantHectarea);
+        Productor p = new Productor(cuit.toUpperCase(), razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase(), cantHectarea);
         this.persistencia.insertar(p);
         
         this.persistencia.confirmarTransaccion();

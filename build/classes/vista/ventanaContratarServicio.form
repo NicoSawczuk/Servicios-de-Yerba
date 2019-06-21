@@ -31,15 +31,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="label2" min="-2" max="-2" attributes="0"/>
                   <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="comboPrestador" alignment="0" max="32767" attributes="0"/>
-                      <Component id="label1" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="comboProductor" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botonCancelar" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonCancelar" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
+                  <Component id="comboProductor" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
+                  <Component id="comboPrestador" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="191" max="32767" attributes="0"/>
           </Group>

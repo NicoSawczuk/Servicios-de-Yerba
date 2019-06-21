@@ -41,11 +41,13 @@
                           <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCUIT" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                           <Component id="txtNroInscrip" min="-2" pref="111" max="-2" attributes="0"/>
-                          <Component id="txtDomicilio" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                           <Component id="txtRazonSocial" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                           <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboTipoServicio" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="comboTipoServicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtDomicilio" alignment="0" pref="111" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="58" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -56,8 +58,8 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboZonas" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Component id="botonAgregar" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboZonas" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>

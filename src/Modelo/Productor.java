@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="productores")
 public class Productor extends Persona{
     //Atributos
-    private double cantHectarea;
+    private String cantHectarea;
 
     
     @ManyToMany
@@ -21,7 +21,7 @@ public class Productor extends Persona{
     
     
     
-    public Productor(int cuit, String razonSocial, int numeroInym, String domicilioLegal, double cantHectarea) {
+    public Productor(String cuit, String razonSocial, String numeroInym, String domicilioLegal, String cantHectarea) {
         super(cuit, razonSocial, numeroInym, domicilioLegal);
         this.cantHectarea=cantHectarea;
     } 
@@ -33,10 +33,7 @@ public class Productor extends Persona{
     
     @Override
     public String toString(){
-        int g = super.getCuit();
-        String cuit = String.valueOf(g);
-        
-        return cuit;
+        return super.getCuit();
     }
     
     

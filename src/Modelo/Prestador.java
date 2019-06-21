@@ -33,7 +33,7 @@ public class Prestador extends Persona{
 
     
     
-    public Prestador(int cuit, String razonSocial, int numeroInym, String domicilioLegal) {
+    public Prestador(String cuit, String razonSocial, String numeroInym, String domicilioLegal) {
         super(cuit, razonSocial, numeroInym, domicilioLegal);
     }
 
@@ -58,9 +58,7 @@ public class Prestador extends Persona{
     
     @Override
     public String toString(){
-        int cui = super.getCuit();
-        String cuit = String.valueOf(cui);
-        return cuit;
+        return super.getCuit();
     }
     
     

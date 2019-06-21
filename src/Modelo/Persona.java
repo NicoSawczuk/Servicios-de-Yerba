@@ -13,9 +13,9 @@ import javax.persistence.Table;
 public abstract class Persona {
     //Atributos
     @Id
-    private int cuit;
+    private String cuit;
     private String razonSocial;
-    private int numeroInym;
+    private String numeroInym;
     private String domicilioLegal;
 
     public Persona() {
@@ -23,7 +23,7 @@ public abstract class Persona {
 
     
     
-    public Persona(int cuit, String razonSocial, int numeroInym, String domicilioLegal) {
+    public Persona(String cuit, String razonSocial, String numeroInym, String domicilioLegal) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.numeroInym = numeroInym;
@@ -32,11 +32,11 @@ public abstract class Persona {
     
     //Getters and Setters
 
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(String cuit) {
         this.cuit = cuit;
     }
 
@@ -48,11 +48,11 @@ public abstract class Persona {
         this.razonSocial = razonSocial;
     }
 
-    public int getNumeroInym() {
+    public String getNumeroInym() {
         return numeroInym;
     }
 
-    public void setNumeroInym(int numeroInym) {
+    public void setNumeroInym(String numeroInym) {
         this.numeroInym = numeroInym;
     }
 
