@@ -31,30 +31,38 @@ public class Controlador {
     //Agregar
     public void agregarPrestador(String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal){
         this.persistencia.iniciarTransaccion();
-        Prestador p = new Prestador(nombre.toUpperCase(), cuit.toUpperCase(), razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase());
-        this.persistencia.insertar(p);
-        
-        this.persistencia.confirmarTransaccion();
+        try {
+            Prestador p = new Prestador(nombre.toUpperCase(), cuit.toUpperCase(), razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase());
+            this.persistencia.insertar(p);
+            this.persistencia.confirmarTransaccion();
+        } catch (Exception e) {
+            this.persistencia.descartarTransaccion();
+            System.err.println("No se pudo agregar el Prestador");
+        }
     }
     
     public void agregarProductor(String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal, String cantHectarea){
         this.persistencia.iniciarTransaccion();
-        
+        try {
         Productor p = new Productor(nombre.toUpperCase(), cuit.toUpperCase(), razonSocial.toUpperCase(), numeroInym, domicilioLegal.toUpperCase(), cantHectarea);
         this.persistencia.insertar(p);
-        
-        this.persistencia.confirmarTransaccion();
+            this.persistencia.confirmarTransaccion();
+        } catch (Exception e) {
+            this.persistencia.descartarTransaccion();
+            System.err.println("No se pudo agregar el Productor");
+        }
     
     }
         public void agregarTipoServicio(double costo, String descripcion){
             this.persistencia.iniciarTransaccion();
-            
+        try {
             TipoServicio s = new TipoServicio(costo, descripcion.toUpperCase());
             this.persistencia.insertar(s);
-            
             this.persistencia.confirmarTransaccion();
-            
-            
+        } catch (Exception e) {
+            this.persistencia.descartarTransaccion();
+            System.err.println("No se pudo agregar el Tipo de Servicio");
+        }
         }
         
     
@@ -78,10 +86,10 @@ public class Controlador {
     public List listarTiposServicios(){
         return this.persistencia.buscarTodos(TipoServicio.class);
     }
+}
     
     
     
     
     //Insertar
-    
-}
+        
