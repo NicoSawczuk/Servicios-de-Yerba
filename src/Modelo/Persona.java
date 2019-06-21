@@ -17,20 +17,29 @@ public abstract class Persona {
     private String razonSocial;
     private String numeroInym;
     private String domicilioLegal;
+    private String nombre;
 
     public Persona() {
     }
 
     
     
-    public Persona(String cuit, String razonSocial, String numeroInym, String domicilioLegal) {
+    public Persona(String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal) {
+        this.nombre = nombre;
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.numeroInym = numeroInym;
         this.domicilioLegal = domicilioLegal;
     }
     
+    public String getNombre() {
+        return nombre;
+    }
+
     //Getters and Setters
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public String getCuit() {
         return cuit;

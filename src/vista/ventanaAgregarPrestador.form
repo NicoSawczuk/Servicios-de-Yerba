@@ -48,6 +48,8 @@
                               <Component id="comboTipoServicio" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtDomicilio" alignment="0" pref="111" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="label9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombre" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="58" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -81,6 +83,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="label9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="label1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtCUIT" min="-2" max="-2" attributes="0"/>
@@ -96,7 +102,7 @@
                       <Component id="label4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtDomicilio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="label8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="comboTipoServicio" min="-2" max="-2" attributes="0"/>
@@ -228,5 +234,12 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="java.awt.Label" name="label9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNombre">
+    </Component>
   </SubComponents>
 </Form>
