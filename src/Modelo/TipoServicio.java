@@ -39,10 +39,11 @@ public class TipoServicio {
         
     }
     
-    public TipoServicio(double costo, String descripcion){
+    public TipoServicio(double costo, String descripcion, Unidad unidad){
         //falta agregar la pta unidad motherfucker shit hostia chaval pringao
         this.costo=costo;
         this.descripcion=descripcion;
+        this.unidad=unidad;
     }
     
     //Getters and Setters

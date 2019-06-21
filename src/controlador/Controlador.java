@@ -41,6 +41,15 @@ public class Controlador {
         }
     }
     
+    public void agregarZonaPrestador(Prestador p, Zona z){
+        this.persistencia.iniciarTransaccion();
+        p.AgregarZona(z);
+        this.persistencia.modificar(z);
+        this.persistencia.modificar(p);
+        this.persistencia.confirmarTransaccion();
+    }
+    
+    
     public void agregarProductor(String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal, String cantHectarea){
         this.persistencia.iniciarTransaccion();
         try {
@@ -53,10 +62,10 @@ public class Controlador {
         }
     
     }
-        public void agregarTipoServicio(double costo, String descripcion){
+        public void agregarTipoServicio(double costo, String descripcion, Unidad unidad){
             this.persistencia.iniciarTransaccion();
         try {
-            TipoServicio s = new TipoServicio(costo, descripcion.toUpperCase());
+            TipoServicio s = new TipoServicio(costo, descripcion.toUpperCase(), unidad);
             this.persistencia.insertar(s);
             this.persistencia.confirmarTransaccion();
         } catch (Exception e) {
@@ -64,8 +73,34 @@ public class Controlador {
             System.err.println("No se pudo agregar el Tipo de Servicio");
         }
         }
+
+    //Editar
+    public void editarPrestador(Prestador p, String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal){
+        this.persistencia.iniciarTransaccion();
+        p.setCuit(cuit);
+        p.setDomicilioLegal(domicilioLegal);
+        p.setNombre(nombre);
+        p.setNumeroInym(numeroInym);
+        p.setRazonSocial(razonSocial);
+        this.persistencia.modificar(p);
+        this.persistencia.confirmarTransaccion();
+    }
         
     
+    
+    
+    //Eliminar
+    public int eliminarPrestador(Prestador p){
+        if (p.getZonas().isEmpty()){
+            this.persistencia.iniciarTransaccion();
+            this.persistencia.eliminar(p);
+            this.persistencia.confirmarTransaccion();
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
     //Listar
     public List listarPrestadores(){
         return this.persistencia.buscarTodos(Prestador.class);

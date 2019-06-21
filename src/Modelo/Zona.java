@@ -30,6 +30,7 @@ public class Zona {
         this.prestadores = new ArrayList<>();
     }
     
+    
     //Getters and Setters
 
     public int getIdZona() {
@@ -46,6 +47,11 @@ public class Zona {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    
+    public void agregarPrestador(Prestador prestador){
+        this.prestadores.add(prestador);
     }
     
     

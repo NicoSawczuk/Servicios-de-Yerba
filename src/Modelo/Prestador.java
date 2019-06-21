@@ -35,6 +35,7 @@ public class Prestador extends Persona{
     
     public Prestador(String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal) {
         super(nombre, cuit, razonSocial, numeroInym, domicilioLegal);
+        this.zonas=new ArrayList();
     }
 
     
@@ -55,6 +56,17 @@ public class Prestador extends Persona{
     public void setServiciosPrestador(List<ServicioPrestador> serviciosPrestador) {
         this.serviciosPrestador = serviciosPrestador;
     }
+
+    public List<Zona> getZonas() {
+        return zonas;
+    }
+
+    public void AgregarZona(Zona zonas) {
+        this.zonas.add(zonas);
+        zonas.agregarPrestador(this);
+        
+    }
+    
     
     @Override
     public String toString(){

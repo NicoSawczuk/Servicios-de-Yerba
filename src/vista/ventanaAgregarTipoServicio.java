@@ -5,6 +5,7 @@
  */
 package vista;
 
+import Modelo.Unidad;
 import controlador.Controlador;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -145,7 +146,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         //Casteamos lo que hay que castear
         String costo2 = txtCosto.getText();
         double costo = Double.parseDouble(costo2);
-        this.c.agregarTipoServicio(costo, txtDescripcion.getText());
+        this.c.agregarTipoServicio(costo, txtDescripcion.getText(), (Unidad) comboUnidad.getSelectedItem());
         limpiar();
     }//GEN-LAST:event_agregarTipoServicioActionPerformed
 
