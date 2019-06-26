@@ -24,8 +24,8 @@ public class TipoServicio {
     private double costo;
     private String descripcion;
     
-    @OneToOne
-    private Servicio servicio;
+    @OneToMany (mappedBy ="tipoServicio")
+    private List<Servicio> servicios;
     
     @OneToMany(mappedBy="tipoServicio")
     private List<ServicioPrestador> serviciosPrestador;
@@ -36,6 +36,7 @@ public class TipoServicio {
     
 
     public TipoServicio() {
+        this.servicios=new ArrayList<>();
         
     }
     
@@ -44,6 +45,7 @@ public class TipoServicio {
         this.costo=costo;
         this.descripcion=descripcion;
         this.unidad=unidad;
+        this.servicios=new ArrayList<>();
     }
     
     //Getters and Setters

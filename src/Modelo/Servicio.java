@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,7 +29,7 @@ public class Servicio {
     private boolean terminado = false;
     private boolean cancelado = false;
     
-    @OneToOne
+    @ManyToOne
     private TipoServicio tipoServicio;
     
     @ManyToMany(mappedBy = "servicios")
@@ -41,13 +42,14 @@ public class Servicio {
         this.productores = new ArrayList<>(); 
     }
     
-    public Servicio (String descripcion, double costoTotal, boolean terminado, boolean cancelado){
+    public Servicio (String descripcion, double costoTotal, boolean terminado, boolean cancelado, TipoServicio tipoServicio){
         this.tipo=tipo;
         this.descripcion=descripcion;
         this.costoTotal=costoTotal;
         this.fechaInicio=new Date();
         this.terminado=false;
         this.cancelado=false;
+        this.tipoServicio=tipoServicio;
     }
     
     //Getters and Setters
