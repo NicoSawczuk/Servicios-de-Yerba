@@ -71,6 +71,14 @@ public class TipoServicio {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
     
     
     @Override

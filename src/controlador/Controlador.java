@@ -7,10 +7,12 @@ package controlador;
 
 import Modelo.Prestador;
 import Modelo.Productor;
+import Modelo.Servicio;
 import Modelo.TipoServicio;
 import Modelo.Unidad;
 import Modelo.Zona;
 import dao.Persistencia;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -73,6 +75,7 @@ public class Controlador {
             System.err.println("No se pudo agregar el Tipo de Servicio");
         }
         }
+        
 
     //Editar
     public void editarPrestador(Prestador p, String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal){
@@ -83,6 +86,14 @@ public class Controlador {
         p.setNumeroInym(numeroInym);
         p.setRazonSocial(razonSocial);
         this.persistencia.modificar(p);
+        this.persistencia.confirmarTransaccion();
+    }
+    
+    public void editarTipoServicio(TipoServicio s, double costo, String descripcion, Unidad unidad){
+        this.persistencia.iniciarTransaccion();
+        s.setCosto(costo);
+        s.setDescripcion(descripcion);
+        s.setUnidad(unidad);
         this.persistencia.confirmarTransaccion();
     }
         
@@ -100,7 +111,25 @@ public class Controlador {
         else {
             return 1;
         }
-    }
+        }
+     public int eliminarTipoServicio(TipoServicio s){
+        /*if (s.getZonas().isEmpty()){
+            this.persistencia.iniciarTransaccion();
+            this.persistencia.eliminar(s);
+            this.persistencia.confirmarTransaccion();
+            return 0;
+        }
+        else {
+            return 1;
+        }   */
+        
+        this.persistencia.iniciarTransaccion();
+        this.persistencia.eliminar(s);
+        this.persistencia.confirmarTransaccion();
+        return 0;
+     }
+        
+    
     //Listar
     public List listarPrestadores(){
         return this.persistencia.buscarTodos(Prestador.class);
@@ -120,6 +149,10 @@ public class Controlador {
     
     public List listarTiposServicios(){
         return this.persistencia.buscarTodos(TipoServicio.class);
+    }
+    
+    public List listarServicios(){
+        return this.persistencia.buscarTodos(Servicio.class);
     }
 }
     
