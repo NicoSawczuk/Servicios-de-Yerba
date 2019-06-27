@@ -8,6 +8,7 @@ package controlador;
 import Modelo.Prestador;
 import Modelo.Productor;
 import Modelo.Servicio;
+import Modelo.ServicioPrestador;
 import Modelo.TipoServicio;
 import Modelo.Unidad;
 import Modelo.Zona;
@@ -64,15 +65,31 @@ public class Controlador {
         }
     
     }
-        public void agregarTipoServicio(double costo, String descripcion, Unidad unidad){
+        public void agregarTipoServicio(String descripcion, Unidad unidad){
             this.persistencia.iniciarTransaccion();
         try {
-            TipoServicio s = new TipoServicio(costo, descripcion.toUpperCase(), unidad);
+            TipoServicio s = new TipoServicio(descripcion.toUpperCase(), unidad);
             this.persistencia.insertar(s);
             this.persistencia.confirmarTransaccion();
         } catch (Exception e) {
             this.persistencia.descartarTransaccion();
             System.err.println("No se pudo agregar el Tipo de Servicio");
+        }
+        }
+        
+        public void agregarServicioPrestador(double costo, TipoServicio tipoServicio, Prestador prestador){
+            this.persistencia.iniciarTransaccion();
+            try {
+            ServicioPrestador s = new ServicioPrestador(costo, tipoServicio, prestador);
+            tipoServicio.agregarServicioPrestador(s);
+            prestador.agregarServicioPrestador(s);
+            s.agregarTipoServicio(tipoServicio);
+            this.persistencia.modificar(tipoServicio);
+            this.persistencia.modificar(prestador);
+            this.persistencia.confirmarTransaccion();
+        } catch (Exception e) {
+            this.persistencia.descartarTransaccion();
+            System.err.println("No se pudo agregar el Servicio");
         }
         }
         
@@ -89,9 +106,8 @@ public class Controlador {
         this.persistencia.confirmarTransaccion();
     }
     
-    public void editarTipoServicio(TipoServicio s, double costo, String descripcion, Unidad unidad){
+    public void editarTipoServicio(TipoServicio s, String descripcion, Unidad unidad){
         this.persistencia.iniciarTransaccion();
-        s.setCosto(costo);
         s.setDescripcion(descripcion.toUpperCase());
         s.setUnidad(unidad);
         this.persistencia.confirmarTransaccion();
@@ -107,6 +123,7 @@ public class Controlador {
         p.setCantHectarea(cantHectarea);
         this.persistencia.confirmarTransaccion();
     }
+    
         
     
     
@@ -175,6 +192,7 @@ public class Controlador {
         return this.persistencia.buscarTodos(Servicio.class);
     }
 }
+
     
     
     

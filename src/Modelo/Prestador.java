@@ -61,10 +61,14 @@ public class Prestador extends Persona{
         return zonas;
     }
 
+    //agregar
     public void AgregarZona(Zona zonas) {
         this.zonas.add(zonas);
-        zonas.agregarPrestador(this);
-        
+        zonas.agregarPrestador(this); 
+    }
+    
+    public void agregarServicioPrestador(ServicioPrestador sp){
+        this.serviciosPrestador.add(sp);
     }
     
     

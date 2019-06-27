@@ -21,7 +21,6 @@ public class TipoServicio {
     @SequenceGenerator(name="sec_TipoServicio", initialValue=1, allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sec_TipoServicio")
     private int tipoServicio;
-    private double costo;
     private String descripcion;
     
     @OneToMany (mappedBy ="tipoServicio")
@@ -40,9 +39,8 @@ public class TipoServicio {
         
     }
     
-    public TipoServicio(double costo, String descripcion, Unidad unidad){
-        //falta agregar la pta unidad motherfucker shit hostia chaval pringao
-        this.costo=costo;
+    public TipoServicio( String descripcion, Unidad unidad){
+ 
         this.descripcion=descripcion;
         this.unidad=unidad;
         this.servicios=new ArrayList<>();
@@ -56,14 +54,6 @@ public class TipoServicio {
 
     public void setTipoServicio(int tipoServicio) {
         this.tipoServicio = tipoServicio;
-    }
-
-    public double getCosto() {
-        return costo;
-    }
-
-    public void setCosto(double costo) {
-        this.costo = costo;
     }
 
     public String getDescripcion() {
@@ -99,7 +89,12 @@ public class TipoServicio {
     }
     
     
+    //agregar
     
+    public void agregarServicioPrestador(ServicioPrestador sp){
+        this.serviciosPrestador.add(sp);
+        sp.agregarTipoServicio(this);
+    }
     
     @Override
     public String toString(){

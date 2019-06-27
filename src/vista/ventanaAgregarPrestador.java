@@ -39,21 +39,28 @@ public class ventanaAgregarPrestador extends javax.swing.JFrame {
         this.txtDomicilio.setText("");
         this.txtNroInscrip.setText("");
         this.txtRazonSocial.setText("");
-        DefaultComboBoxModel comboZonas2 = new DefaultComboBoxModel(this.c.listarZonas().toArray());
+        
         
         //creamos una nueva lista de prestadores vacia
         DefaultListModel modelolista = new DefaultListModel();
         this.listaPrestador.setModel(modelolista);
         
-         //llenamos la lista
+         //llenamos la lista de prestadores 
         this.listaPrestador.setListData(this.c.listarPrestadores().toArray());
-        //desseleccionamos la lista
+        //desseleccionamos la lista de prestadores
         this.listaPrestador.clearSelection();
         
+        DefaultComboBoxModel comboZonas2 = new DefaultComboBoxModel(this.c.listarZonas().toArray());
         this.comboZonas.setModel(comboZonas2);
-        //desseleccionamos el combo
+        
+        //desseleccionamos la lista de prestadores
+        this.listaZonas.clearSelection();
+        
+        //limpiamos la lista de zonas
+        this.listaZonas.setModel(modelolista);
+        //desseleccionamos el combo de zonas
         this.comboZonas.setSelectedIndex(-1);
-        //ocultamos el combo
+        //ocultamos el combo de zonas
         this.comboZonas.setEnabled(false);
         
     }
