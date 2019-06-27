@@ -81,10 +81,10 @@ public class Controlador {
     public void editarPrestador(Prestador p, String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal){
         this.persistencia.iniciarTransaccion();
         p.setCuit(cuit);
-        p.setDomicilioLegal(domicilioLegal);
-        p.setNombre(nombre);
+        p.setDomicilioLegal(domicilioLegal.toUpperCase());
+        p.setNombre(nombre.toUpperCase());
         p.setNumeroInym(numeroInym);
-        p.setRazonSocial(razonSocial);
+        p.setRazonSocial(razonSocial.toUpperCase());
         this.persistencia.modificar(p);
         this.persistencia.confirmarTransaccion();
     }
@@ -92,8 +92,19 @@ public class Controlador {
     public void editarTipoServicio(TipoServicio s, double costo, String descripcion, Unidad unidad){
         this.persistencia.iniciarTransaccion();
         s.setCosto(costo);
-        s.setDescripcion(descripcion);
+        s.setDescripcion(descripcion.toUpperCase());
         s.setUnidad(unidad);
+        this.persistencia.confirmarTransaccion();
+    }
+    
+    public void editarProductor(Productor p, String nombre, String cuit, String razonSocial, String numeroInym, String domicilioLegal, String cantHectarea){
+        this.persistencia.iniciarTransaccion();
+        p.setNombre(nombre.toUpperCase());
+        p.setCuit(cuit);
+        p.setRazonSocial(razonSocial.toUpperCase());
+        p.setNumeroInym(numeroInym);
+        p.setDomicilioLegal(domicilioLegal.toUpperCase());
+        p.setCantHectarea(cantHectarea);
         this.persistencia.confirmarTransaccion();
     }
         
@@ -113,7 +124,8 @@ public class Controlador {
         }
         }
      public int eliminarTipoServicio(TipoServicio s){
-        /*if (s.getZonas().isEmpty()){
+        //verificamos que el TipoServicio que queremos eliminar  no tenga servicios asociados 
+         if (s.getServicios().isEmpty() && s.getServiciosPrestador().isEmpty()){
             this.persistencia.iniciarTransaccion();
             this.persistencia.eliminar(s);
             this.persistencia.confirmarTransaccion();
@@ -121,13 +133,21 @@ public class Controlador {
         }
         else {
             return 1;
-        }   */
-        
-        this.persistencia.iniciarTransaccion();
-        this.persistencia.eliminar(s);
-        this.persistencia.confirmarTransaccion();
-        return 0;
+        }
      }
+     
+         public int eliminarProductor(Productor p){
+             //verificamos que el productor que queremos eliminar no tenga servicios contratados
+            if (p.getServicios().isEmpty()){
+                this.persistencia.iniciarTransaccion();
+                this.persistencia.eliminar(p);
+                this.persistencia.confirmarTransaccion();
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
         
     
     //Listar

@@ -5,8 +5,10 @@
  */
 package vista;
 
+import Modelo.Productor;
 import controlador.Controlador;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +25,7 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
         initComponents();
         this.c=c;
         this.vAnterior=vAnterior;
+        limpiar();
     }
     
     public void limpiar(){
@@ -32,6 +35,10 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
         this.txtNroInscrip.setText("");
         this.txtRazonSocial.setText("");
         this.txtCantHect.setText("");
+         //llenamos la lista
+        this.listaProductor.setListData(this.c.listarProductores().toArray());
+        //desseleccionamos la lista
+        this.listaProductor.clearSelection();
     }
 
     /**
@@ -46,8 +53,6 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
         label6 = new java.awt.Label();
         label5 = new java.awt.Label();
         label7 = new java.awt.Label();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaProductor = new javax.swing.JList();
         txtNroInscrip = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtDomicilio = new javax.swing.JTextField();
@@ -63,9 +68,8 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
         label9 = new java.awt.Label();
         label10 = new java.awt.Label();
         txtCantHect = new javax.swing.JTextField();
-        label8 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaProductor1 = new javax.swing.JList();
+        listaProductor = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -80,8 +84,6 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
         label5.setText("Cantidad Hectareas");
 
         label7.setText("Productores");
-
-        jScrollPane1.setViewportView(tablaProductor);
 
         label1.setText("CUIT");
 
@@ -119,9 +121,12 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
 
         label10.setText("Agregar Productor");
 
-        label8.setText("Servicios");
-
-        jScrollPane2.setViewportView(tablaProductor1);
+        listaProductor.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaProductorValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listaProductor);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,49 +141,45 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(79, 79, 79)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCUIT, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRazonSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNroInscrip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
+                                .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCUIT, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNroInscrip, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                            .addComponent(txtCantHect)))))))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                                    .addComponent(txtDomicilio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCantHect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,8 +190,7 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
                     .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,12 +219,9 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,31 +234,55 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
-        // TODO add your handling code here:
+        limpiar();
     }//GEN-LAST:event_botonNuevoActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        Prestador p = (Prestador) this.listaPrestador.getSelectedValue();
+        Productor p = (Productor) this.listaProductor.getSelectedValue();
         if (p != null){
-            int i = this.c.eliminarPrestador(p);
+            int i = this.c.eliminarProductor(p);
             if (i!=0){
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el Prestador", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No es posible eliminar el Productor", "Error", JOptionPane.ERROR_MESSAGE);
             }
             limpiar();
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        if (!this.listaPrestador.isSelectionEmpty()) {
-            Prestador p = (Prestador) this.listaPrestador.getSelectedValue();
-            this.c.editarPrestador(p, txtNombre.getText(), txtCUIT.getText(), txtRazonSocial.getText(), txtNroInscrip.getText(), txtDomicilio.getText());
+        if (!this.listaProductor.isSelectionEmpty()) {
+            Productor p = (Productor) this.listaProductor.getSelectedValue();
+            this.c.editarProductor(p, txtNombre.getText(), txtCUIT.getText(), txtRazonSocial.getText(), txtNroInscrip.getText(), txtDomicilio.getText(), txtCantHect.getText());
         }
         else{
-            this.c.agregarPrestador(txtNombre.getText(), txtCUIT.getText(), txtRazonSocial.getText(), txtNroInscrip.getText(), txtDomicilio.getText());
+            this.c.agregarProductor(txtNombre.getText(), txtCUIT.getText(), txtRazonSocial.getText(), txtNroInscrip.getText(), txtDomicilio.getText(), txtCantHect.getText());
         }
         limpiar();
         this.botonGuardar.setEnabled(true);
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void listaProductorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaProductorValueChanged
+        if(!this.listaProductor.isSelectionEmpty()){
+            Productor p = (Productor) this.listaProductor.getSelectedValue();
+            this.txtCUIT.setText(p.getCuit());
+            this.txtDomicilio.setText(p.getDomicilioLegal());
+            this.txtNombre.setText(p.getNombre());
+            this.txtNroInscrip.setText(p.getNumeroInym());
+            this.txtRazonSocial.setText(p.getRazonSocial());
+            this.txtCantHect.setText(p.getCantHectarea());
+            this.txtNroInscrip.setEnabled(false);
+            this.txtCUIT.setEnabled(false);            
+        }
+        else{
+            this.txtCUIT.setEnabled(true);
+            this.txtDomicilio.setEnabled(true);
+            this.txtNombre.setEnabled(true);
+            this.txtNroInscrip.setEnabled(true);
+            this.txtRazonSocial.setEnabled(true);
+            this.txtCantHect.setEnabled(true);
+            this.botonEliminar.setEnabled(true);
+            this.botonGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_listaProductorValueChanged
 
     /**
      * @param args the command line arguments
@@ -272,7 +293,6 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
     private java.awt.Button botonEliminar;
     private java.awt.Button botonGuardar;
     private java.awt.Button botonNuevo;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label1;
     private java.awt.Label label10;
@@ -282,10 +302,8 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
     private java.awt.Label label5;
     private java.awt.Label label6;
     private java.awt.Label label7;
-    private java.awt.Label label8;
     private java.awt.Label label9;
-    private javax.swing.JList tablaProductor;
-    private javax.swing.JList tablaProductor1;
+    private javax.swing.JList listaProductor;
     private javax.swing.JTextField txtCUIT;
     private javax.swing.JTextField txtCantHect;
     private javax.swing.JTextField txtDomicilio;

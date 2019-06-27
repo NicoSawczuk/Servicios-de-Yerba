@@ -24,11 +24,32 @@ public class Productor extends Persona{
     public Productor(String nombre, String cuit, String razonSocial, String numeroInym, String domicilioLegal, String cantHectarea) {
         super(nombre, cuit, razonSocial, numeroInym, domicilioLegal);
         this.cantHectarea=cantHectarea;
+        this.servicios=new ArrayList<>();
     } 
     
 
     public Productor() {
+        this.servicios=new ArrayList<>();
     }
+    
+    //Getters and Setters
+    public String getCantHectarea() {
+        return cantHectarea;
+    }
+
+    public void setCantHectarea(String cantHectarea) {
+        this.cantHectarea = cantHectarea;
+    }
+
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+    
+    
   
     
     @Override

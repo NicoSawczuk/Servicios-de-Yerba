@@ -331,6 +331,9 @@ public class ventanaAgregarPrestador extends javax.swing.JFrame {
             this.txtNroInscrip.setText(p.getNumeroInym());
             this.txtRazonSocial.setText(p.getRazonSocial());
             this.comboZonas.setEnabled(true);
+            this.txtNroInscrip.setEnabled(false);
+            this.txtCUIT.setEnabled(false);
+            this.listaZonas.setListData(p.getZonas().toArray());
         }
         else{
             this.txtCUIT.setEnabled(true);

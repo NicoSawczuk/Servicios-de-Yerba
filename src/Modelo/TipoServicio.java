@@ -81,6 +81,24 @@ public class TipoServicio {
     public void setUnidad(Unidad unidad) {
         this.unidad = unidad;
     }
+
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
+    public List<ServicioPrestador> getServiciosPrestador() {
+        return serviciosPrestador;
+    }
+
+    public void setServiciosPrestador(List<ServicioPrestador> serviciosPrestador) {
+        this.serviciosPrestador = serviciosPrestador;
+    }
+    
+    
     
     
     @Override
