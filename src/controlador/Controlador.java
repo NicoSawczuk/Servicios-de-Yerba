@@ -93,6 +93,42 @@ public class Controlador {
         }
         }
         
+        public void agregarServicioProductorPrestador(Prestador pres, Productor prod, TipoServicio tipoServicio,  boolean terminado, boolean cancelado){
+           this.persistencia.iniciarTransaccion();
+           try {
+            Servicio s = new Servicio(pres,prod,tipoServicio,terminado,cancelado);
+            s.setDescripcion(tipoServicio.getDescripcion());
+            prod.agregarServicio(s);
+            pres.agregarServicio(s);
+            this.persistencia.insertar(s);
+            this.persistencia.modificar(prod);
+            this.persistencia.modificar(pres);
+            this.persistencia.modificar(tipoServicio);
+            this.persistencia.confirmarTransaccion();
+        }catch (Exception e) {
+            System.out.println("ERRRR"+ e.getMessage());
+            this.persistencia.descartarTransaccion();
+            System.err.println("No se pudo agregar el Servicio");
+        }
+        }
+        
+        public void agregarServicio(Prestador pres, Productor prod, TipoServicio tipoServicio,  boolean terminado, boolean cancelado){
+
+           this.persistencia.iniciarTransaccion();
+            try {
+            Servicio s = new Servicio(pres,prod,tipoServicio,terminado,cancelado);
+            s.setDescripcion(tipoServicio.getDescripcion());
+            s.agregarPrestador(pres);
+            s.agregarProductor(prod);
+            prod.agregarServicio(s);
+            pres.agregarServicio(s);
+            this.persistencia.confirmarTransaccion();
+        } catch (Exception e) {
+            this.persistencia.descartarTransaccion();
+            System.err.println("No se pudo agregar el Servicio");
+        }
+        }
+        
 
     //Editar
     public void editarPrestador(Prestador p, String nombre,String cuit, String razonSocial, String numeroInym, String domicilioLegal){
@@ -191,6 +227,16 @@ public class Controlador {
     public List listarServicios(){
         return this.persistencia.buscarTodos(Servicio.class);
     }
+    
+    public List listarServiciosPrestador(){
+        ServicioPrestador sp = new ServicioPrestador();
+        return (List) sp.getTipoServicio();
+    }
+    
+    
+
+
+    
 }
 
     

@@ -5,8 +5,14 @@
  */
 package vista;
 
+import Modelo.Prestador;
+import Modelo.Productor;
+import Modelo.Servicio;
+import Modelo.ServicioPrestador;
+import Modelo.TipoServicio;
 import controlador.Controlador;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 
 /**
@@ -27,12 +33,21 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
         limpiar();
     }
     public void limpiar(){
-        /*DefaultComboBoxModel comboPres = new DefaultComboBoxModel(this.c.listarPrestadores().toArray());
-        this.comboPrestador.setModel(comboPres);*/
+        //creamos un combo para prestadores, lo llenamos y desseleccionamos
+        DefaultComboBoxModel comboPres = new DefaultComboBoxModel(this.c.listarPrestadores().toArray());
+        this.comboPrestadores.setModel(comboPres);
+        this.comboPrestadores.setSelectedIndex(-1);
         
-        //creamos el combo y listamos los productores
+        //creamos un combo para productores, lo llenamos y desseleccionamos
         DefaultComboBoxModel comboProd = new DefaultComboBoxModel(this.c.listarProductores().toArray());
-        this.comboProductor.setModel(comboProd);
+        this.comboProductores.setModel(comboProd);
+        this.comboProductores.setSelectedIndex(-1);
+        
+        //creamos una nueva lista de servicios vacia y la desseleccionamos
+        DefaultListModel modelolista = new DefaultListModel();
+        this.listaServicios.setModel(modelolista);
+        this.listaServicios.clearSelection();
+        
         
     }
     
@@ -51,10 +66,10 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
         botonCancelar = new java.awt.Button();
         label2 = new java.awt.Label();
         label3 = new java.awt.Label();
-        comboPrestador = new javax.swing.JComboBox<>();
-        comboProductor = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaServicios = new javax.swing.JList();
+        comboProductores = new javax.swing.JComboBox();
+        comboPrestadores = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -76,11 +91,18 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
 
         label3.setText("Productor");
 
-        comboPrestador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        comboProductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jScrollPane2.setViewportView(listaServicios);
+
+        comboPrestadores.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboPrestadoresItemStateChanged(evt);
+            }
+        });
+        comboPrestadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPrestadoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,40 +110,38 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(comboProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(comboPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comboPrestadores, 0, 104, Short.MAX_VALUE)
+                        .addGap(329, 329, 329))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboProductores, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addGap(31, 31, 31)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(comboProductores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboPrestadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,8 +154,24 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
+        if (this.comboProductores.getSelectedItem() != null && this.comboPrestadores.getSelectedItem() != null){
+            Prestador pres = (Prestador) this.comboPrestadores.getSelectedItem();
+            Productor prod = (Productor) this.comboProductores.getSelectedItem();
+            ServicioPrestador sp = (ServicioPrestador) this.listaServicios.getSelectedValue();
+            this.c.agregarServicioProductorPrestador(pres, prod, sp.getTipoServicio(), false, false);
+         }
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void comboPrestadoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboPrestadoresItemStateChanged
+         if (this.comboPrestadores.getSelectedItem() != null){
+            Prestador p = (Prestador) this.comboPrestadores.getSelectedItem();
+            this.listaServicios.setListData(p.getServiciosPrestador().toArray());
+        }
+    }//GEN-LAST:event_comboPrestadoresItemStateChanged
+
+    private void comboPrestadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPrestadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPrestadoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,8 +180,8 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button botonCancelar;
-    private javax.swing.JComboBox<String> comboPrestador;
-    private javax.swing.JComboBox<String> comboProductor;
+    private javax.swing.JComboBox comboPrestadores;
+    private javax.swing.JComboBox comboProductores;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label1;
     private java.awt.Label label2;

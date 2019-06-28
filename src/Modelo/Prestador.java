@@ -71,6 +71,11 @@ public class Prestador extends Persona{
         this.serviciosPrestador.add(sp);
     }
     
+    public void agregarServicio(Servicio s){
+        this.servicios.add(s);
+        
+    }
+    
     
     @Override
     public String toString(){

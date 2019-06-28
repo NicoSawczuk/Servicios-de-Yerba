@@ -49,6 +49,12 @@ public class Productor extends Persona{
         this.servicios = servicios;
     }
     
+    //Agregar
+    public void agregarServicio(Servicio s){
+        this.servicios.add(s);
+        
+    }
+    
     
   
     

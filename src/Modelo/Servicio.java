@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -17,6 +20,10 @@ import javax.persistence.Temporal;
 @Table (name="servicios")
 public class Servicio {
     @Id
+    @SequenceGenerator(name="sec_servicio", initialValue=1, allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sec_servicio")
+    private int idServicio;
+    
     private int tipo;
     private String descripcion;
     private double costoTotal;
@@ -42,14 +49,14 @@ public class Servicio {
         this.productores = new ArrayList<>(); 
     }
     
-    public Servicio (String descripcion, double costoTotal, boolean terminado, boolean cancelado, TipoServicio tipoServicio){
-        this.tipo=tipo;
+    public Servicio (Prestador pres, Productor prod, TipoServicio tipoServicio,  boolean terminado, boolean cancelado){
+        this.tipo= tipoServicio.getTipoServicio();
         this.descripcion=descripcion;
-        this.costoTotal=costoTotal;
         this.fechaInicio=new Date();
         this.terminado=false;
         this.cancelado=false;
         this.tipoServicio=tipoServicio;
+        tipoServicio.getServicios().add(this);
     }
     
     //Getters and Setters
@@ -126,6 +133,17 @@ public class Servicio {
         this.cancelado = cancelado;
     }
     
+    //Agregar
+    public void agregarProductor(Productor p){
+        this.productores.add(p);
+        p.agregarServicio(this);
+    }
+    public void agregarPrestador(Prestador p){
+        this.prestadores.add(p);
+        p.agregarServicio(this);
+    }
+    
+
     
     public String toString(){
         return this.descripcion;
