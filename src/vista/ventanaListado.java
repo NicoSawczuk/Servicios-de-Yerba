@@ -5,7 +5,11 @@
  */
 package vista;
 
+import Modelo.Prestador;
+import Modelo.Productor;
 import controlador.Controlador;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 
 /**
@@ -23,6 +27,7 @@ public class ventanaListado extends javax.swing.JFrame {
         initComponents();
         this.c=c;
         this.vAnterior=vAnterior;
+        limpiar();
     }
 
     /**
@@ -34,6 +39,26 @@ public class ventanaListado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaPrestador = new javax.swing.JList();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        listaServiciosPrestador = new javax.swing.JList();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaServicios = new javax.swing.JList();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listaProductor = new javax.swing.JList();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        listaHistorialPuntajes = new javax.swing.JList();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -41,15 +66,155 @@ public class ventanaListado extends javax.swing.JFrame {
             }
         });
 
+        listaPrestador.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPrestadorValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listaPrestador);
+
+        jLabel1.setText("Listado de prestadores:");
+
+        jLabel4.setText("Lista de servicios");
+
+        listaServiciosPrestador.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaServiciosPrestadorValueChanged(evt);
+            }
+        });
+        jScrollPane7.setViewportView(listaServiciosPrestador);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(73, 73, 73))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Prestadores", jPanel1);
+
+        listaServicios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaServiciosValueChanged(evt);
+            }
+        });
+        jScrollPane4.setViewportView(listaServicios);
+
+        jLabel3.setText("Listado de servicios existentes:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(283, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Servicios", jPanel3);
+
+        listaProductor.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaProductorValueChanged(evt);
+            }
+        });
+        jScrollPane5.setViewportView(listaProductor);
+
+        listaHistorialPuntajes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaHistorialPuntajesValueChanged(evt);
+            }
+        });
+        jScrollPane6.setViewportView(listaHistorialPuntajes);
+
+        jLabel6.setText("Historial de puntajes");
+
+        jLabel2.setText("Listado de productores:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Productores", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2)
+                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148))
         );
 
         pack();
@@ -61,11 +226,86 @@ public class ventanaListado extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
+     public void limpiar(){
+        //Se crean las listas
+        DefaultListModel modelolista = new DefaultListModel();
+        this.listaPrestador.setModel(modelolista);
+        this.listaProductor.setModel(modelolista);
+        this.listaServiciosPrestador.setModel(modelolista);
+        this.listaHistorialPuntajes.setModel(modelolista);
+        this.listaServicios.setModel(modelolista);
+        
+        //llenamos la lista prestador
+        this.listaPrestador.setListData(this.c.listarPrestadores().toArray());
+        //desseleccionamos la lista prestador
+        this.listaPrestador.clearSelection();
+        
+        //llenamos la lista productor
+        this.listaProductor.setListData(this.c.listarProductores().toArray());
+        //desseleccionamos la lista productor
+        this.listaProductor.clearSelection();
+        
+        //llenamos la lista Servicios
+        this.listaServicios.setListData(this.c.listarServicios().toArray());
+        //desseleccionamos la lista prestador
+        this.listaPrestador.clearSelection();
+        
+    }
+     
+     
+    private void listaPrestadorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPrestadorValueChanged
+        //si la lista prestador esta seleccionada listamos los servicios de ese prestador
+        if(!this.listaPrestador.isSelectionEmpty()){
+            Prestador p = (Prestador) this.listaPrestador.getSelectedValue();
+            this.listaServiciosPrestador.setListData(p.getServiciosPrestador().toArray());   
+        }
+    }//GEN-LAST:event_listaPrestadorValueChanged
+
+    private void listaServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaServiciosValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaServiciosValueChanged
+
+    private void listaProductorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaProductorValueChanged
+    //si la lista productor esta seleccionada listamos los puntajes de ese productor
+        if(!this.listaProductor.isSelectionEmpty()){
+            Productor p = (Productor) this.listaProductor.getSelectedValue();
+            //--------------falta hacer lista de puntajes--------------------
+            //this.listaHistorialPuntajes.setListData(p.);   
+        }
+    }//GEN-LAST:event_listaProductorValueChanged
+
+    private void listaHistorialPuntajesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaHistorialPuntajesValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaHistorialPuntajesValueChanged
+
+    private void listaServiciosPrestadorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaServiciosPrestadorValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaServiciosPrestadorValueChanged
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JList listaHistorialPuntajes;
+    private javax.swing.JList listaPrestador;
+    private javax.swing.JList listaProductor;
+    private javax.swing.JList listaServicios;
+    private javax.swing.JList listaServiciosPrestador;
     // End of variables declaration//GEN-END:variables
 }
