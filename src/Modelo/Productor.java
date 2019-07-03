@@ -55,7 +55,52 @@ public class Productor extends Persona{
         
     }
     
+    //listar terminados
+    public List listarTerminados(){
+        ArrayList<Servicio> serv = new ArrayList<Servicio>();
+        for (int i = 0; i< servicios.size(); i++) {
+            Servicio auxT = servicios.get(i);
+            if (auxT.isTerminado()!=false){
+                serv.add(auxT);
+            }
+        }
+        return serv;
+    }
     
+    public List listarCancelados(){
+        ArrayList<Servicio> serv = new ArrayList<Servicio>();
+        for (int i = 0; i< servicios.size(); i++) {
+            Servicio auxT = servicios.get(i);
+            if (auxT.isCancelado()!=false){
+                serv.add(auxT);
+            }
+        }
+        return serv;
+    }
+    
+    public List listarEnProceso(){
+        ArrayList<Servicio> serv = new ArrayList<Servicio>();
+        for (int i = 0; i< servicios.size(); i++) {
+            Servicio auxT = servicios.get(i);
+            if (auxT.isCancelado()!=true && auxT.isTerminado()!=true){
+                serv.add(auxT);
+            }
+        }
+        return serv;
+    }
+    
+    
+    //metodo obtener puntajes
+    public List listarPuntajes(){
+        ArrayList<String> puntajes = new ArrayList<String>();
+        for (int i = 0; i< servicios.size(); i++) {
+            Servicio auxT = servicios.get(i);
+            if (auxT.isTerminado()!=false){
+                puntajes.add(auxT.getPuntajeServicio());
+            }
+        }
+        return puntajes;
+    }
   
     
     @Override

@@ -13,6 +13,7 @@ import Modelo.TipoServicio;
 import Modelo.Unidad;
 import Modelo.Zona;
 import dao.Persistencia;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -84,6 +85,7 @@ public class Controlador {
             tipoServicio.agregarServicioPrestador(s);
             prestador.agregarServicioPrestador(s);
             s.agregarTipoServicio(tipoServicio);
+            s.setCosto(costo);
             this.persistencia.modificar(tipoServicio);
             this.persistencia.modificar(prestador);
             this.persistencia.confirmarTransaccion();
@@ -93,11 +95,13 @@ public class Controlador {
         }
         }
         
-        public void agregarServicioProductorPrestador(Prestador pres, Productor prod, TipoServicio tipoServicio,  boolean terminado, boolean cancelado){
+        public void agregarServicioProductorPrestador(Prestador pres, Productor prod, TipoServicio tipoServicio,  boolean terminado, boolean cancelado, Date fechaInicio, double costo){
            this.persistencia.iniciarTransaccion();
            try {
             Servicio s = new Servicio(pres,prod,tipoServicio,terminado,cancelado);
             s.setDescripcion(tipoServicio.getDescripcion());
+            s.setFechaInicio(fechaInicio);
+            s.setCostoTotal(costo);
             prod.agregarServicio(s);
             pres.agregarServicio(s);
             this.persistencia.insertar(s);
@@ -157,6 +161,14 @@ public class Controlador {
         p.setNumeroInym(numeroInym);
         p.setDomicilioLegal(domicilioLegal.toUpperCase());
         p.setCantHectarea(cantHectarea);
+        this.persistencia.confirmarTransaccion();
+    }
+    
+    public void cancelarServicio(Servicio s, String causa, int unidades){
+        this.persistencia.iniciarTransaccion();
+        s.setCancelado(true);
+        s.setCausa(causa);
+        s.calcularCosto(unidades);
         this.persistencia.confirmarTransaccion();
     }
     
@@ -233,11 +245,31 @@ public class Controlador {
         return (List) sp.getTipoServicio();
     }
     
+    public List listaServiciosTerminados(Productor p){
+        return p.listarTerminados();
+        }
+    
+    public List listarServiciosEnProceso(Productor p){
+        return p.listarEnProceso();
+    }
+    
+    public List listarHistorialPuntajes(Productor p){
+        return p.listarPuntajes();
+    }
+    
+    
+    
+    }
+
+
+    
+
+    
     
 
 
     
-}
+
 
     
     

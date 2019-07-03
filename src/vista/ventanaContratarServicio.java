@@ -11,9 +11,11 @@ import Modelo.Servicio;
 import Modelo.ServicioPrestador;
 import Modelo.TipoServicio;
 import controlador.Controlador;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -154,12 +156,14 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        Date fechaInicio = new Date();
         if (this.comboProductores.getSelectedItem() != null && this.comboPrestadores.getSelectedItem() != null){
             Prestador pres = (Prestador) this.comboPrestadores.getSelectedItem();
             Productor prod = (Productor) this.comboProductores.getSelectedItem();
             ServicioPrestador sp = (ServicioPrestador) this.listaServicios.getSelectedValue();
-            this.c.agregarServicioProductorPrestador(pres, prod, sp.getTipoServicio(), false, false);
+            this.c.agregarServicioProductorPrestador(pres, prod, sp.getTipoServicio(), false, false, fechaInicio, sp.getCosto());
          }
+        JOptionPane.showMessageDialog(null, "Servicio agregado");
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void comboPrestadoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboPrestadoresItemStateChanged

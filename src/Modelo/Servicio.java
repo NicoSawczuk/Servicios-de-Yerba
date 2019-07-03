@@ -143,6 +143,12 @@ public class Servicio {
         p.agregarServicio(this);
     }
     
+    
+    //calcular costo
+    public void calcularCosto(int cantUnidad){
+        this.costoTotal=((this.getCostoTotal()*cantUnidad));
+    }
+    
 
     
     public String toString(){

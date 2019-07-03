@@ -8,6 +8,7 @@ package vista;
 import Modelo.Prestador;
 import Modelo.Productor;
 import controlador.Controlador;
+import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -246,7 +247,7 @@ public class ventanaListado extends javax.swing.JFrame {
         this.listaProductor.clearSelection();
         
         //llenamos la lista Servicios
-        this.listaServicios.setListData(this.c.listarServicios().toArray());
+        this.listaServicios.setListData(this.c.listarTiposServicios().toArray());
         //desseleccionamos la lista prestador
         this.listaPrestador.clearSelection();
         
@@ -269,8 +270,8 @@ public class ventanaListado extends javax.swing.JFrame {
     //si la lista productor esta seleccionada listamos los puntajes de ese productor
         if(!this.listaProductor.isSelectionEmpty()){
             Productor p = (Productor) this.listaProductor.getSelectedValue();
-            //--------------falta hacer lista de puntajes--------------------
-            //this.listaHistorialPuntajes.setListData(p.);   
+            this.listaHistorialPuntajes.setListData(this.c.listarHistorialPuntajes(p).toArray());
+            
         }
     }//GEN-LAST:event_listaProductorValueChanged
 
