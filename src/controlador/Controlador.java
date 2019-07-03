@@ -172,6 +172,15 @@ public class Controlador {
         this.persistencia.confirmarTransaccion();
     }
     
+    //terminar servicio
+    public void termiarServicio(Servicio s, String puntaje, int unidades){
+        this.persistencia.iniciarTransaccion();
+        s.setTerminado(true);
+        s.calcularCosto(unidades);
+        s.setPuntajeServicio(puntaje);
+        this.persistencia.confirmarTransaccion();
+    }
+    
         
     
     
@@ -264,7 +273,7 @@ public class Controlador {
 
     
 
-    
+
     
 
 

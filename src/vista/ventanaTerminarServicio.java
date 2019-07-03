@@ -5,9 +5,17 @@
  */
 package vista;
 
+import Modelo.Prestador;
+import Modelo.Productor;
+import Modelo.Servicio;
+import Modelo.ServicioPrestador;
+import Modelo.TipoServicio;
 import controlador.Controlador;
+import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,9 +36,16 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
     }
     
     public void limpiar(){
-        this.txtPuntaje.setText("");
+        //limpiamos lo campos de texto
+        this.txtCantidadUnidades.setText("");
+        //creamos el combo y lo desseleccionamos
         DefaultComboBoxModel comboProd = new DefaultComboBoxModel(this.c.listarProductores().toArray());
         this.comboProductor.setModel(comboProd);
+        this.comboProductor.setSelectedIndex(-1);
+        
+        //creamos la lista vacía
+        DefaultListModel modelolista = new DefaultListModel();
+        this.listaServicios.setModel(modelolista);
     }
 
     /**
@@ -44,15 +59,14 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
 
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
-        txtCosto = new java.awt.TextField();
-        label4 = new java.awt.Label();
-        botonTerminar = new java.awt.Button();
         label5 = new java.awt.Label();
-        txtPuntaje = new javax.swing.JTextField();
         comboProductor = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaServicios = new javax.swing.JList();
+        txtCantidadUnidades = new javax.swing.JTextField();
+        label6 = new java.awt.Label();
+        comboPuntaje = new javax.swing.JComboBox<>();
+        botonTerminarServicio = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -65,19 +79,52 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
 
         label2.setText("Puntaje");
 
-        label3.setText("Costo del servicio");
-
-        txtCosto.setBackground(new java.awt.Color(223, 221, 221));
-
-        label4.setText("$");
-
-        botonTerminar.setLabel("Terminar servicio");
-
         label5.setText("Productor");
 
-        comboProductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboProductor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboProductorItemStateChanged(evt);
+            }
+        });
+        comboProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboProductorActionPerformed(evt);
+            }
+        });
 
+        listaServicios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaServiciosValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(listaServicios);
+
+        txtCantidadUnidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadUnidadesActionPerformed(evt);
+            }
+        });
+
+        label6.setText("Cantidad de unidades");
+
+        comboPuntaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Positivo", "Negativo", "Neutro" }));
+        comboPuntaje.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboPuntajeItemStateChanged(evt);
+            }
+        });
+        comboPuntaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPuntajeActionPerformed(evt);
+            }
+        });
+
+        botonTerminarServicio.setLabel("Terminar servicio");
+        botonTerminarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTerminarServicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,54 +133,46 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(comboProductor, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(botonTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtPuntaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                            .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(botonTerminarServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboPuntaje, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(botonTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(131, 131, 131))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(comboPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonTerminarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(142, 142, 142))
         );
 
         pack();
@@ -146,22 +185,68 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowClosing
 
+    private void comboProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductorActionPerformed
+        if(this.comboProductor.getSelectedItem() != null){
+            Productor p = (Productor) this.comboProductor.getSelectedItem();
+            this.listaServicios.setListData(this.c.listarServiciosEnProceso(p).toArray());
+        }
+        else{
+            this.comboPuntaje.setEnabled(false);
+        }
+    }//GEN-LAST:event_comboProductorActionPerformed
+
+    private void txtCantidadUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadUnidadesActionPerformed
+        
+    }//GEN-LAST:event_txtCantidadUnidadesActionPerformed
+
+    private void comboProductorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProductorItemStateChanged
+        
+    }//GEN-LAST:event_comboProductorItemStateChanged
+
+    private void comboPuntajeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboPuntajeItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPuntajeItemStateChanged
+
+    private void comboPuntajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPuntajeActionPerformed
+ 
+    }//GEN-LAST:event_comboPuntajeActionPerformed
+
+    private void listaServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaServiciosValueChanged
+        this.comboPuntaje.setEnabled(true);
+    }//GEN-LAST:event_listaServiciosValueChanged
+
+    private void botonTerminarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarServicioActionPerformed
+        if (this.comboProductor.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null){
+            Productor p = (Productor) this.comboProductor.getSelectedItem();
+            Servicio s = (Servicio) this.listaServicios.getSelectedValue();
+            String unidad2 = txtCantidadUnidades.getText();
+            int unidades = Integer.parseInt(unidad2);
+            String puntaje = (String) this.comboPuntaje.getSelectedItem();
+            
+            
+            this.c.termiarServicio(s, puntaje, unidades);
+            JOptionPane.showMessageDialog(null, "Servicio terminado, su costo es: "+s.getCostoTotal());
+         }
+        limpiar();
+    }//GEN-LAST:event_botonTerminarServicioActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button botonTerminar;
+    private java.awt.Button botonTerminarServicio;
     private javax.swing.JComboBox<String> comboProductor;
+    private javax.swing.JComboBox<String> comboPuntaje;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label1;
     private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
     private java.awt.Label label5;
+    private java.awt.Label label6;
     private javax.swing.JList listaServicios;
-    private java.awt.TextField txtCosto;
-    private javax.swing.JTextField txtPuntaje;
+    private javax.swing.JTextField txtCantidadUnidades;
     // End of variables declaration//GEN-END:variables
 }
