@@ -173,7 +173,7 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
 
         jLabel9.setText("Cantidad de hectareas");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\nico2\\Downloads\\icons8-agregar-administrador-filled-50 (1).png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-agregar-administrador-filled-50 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

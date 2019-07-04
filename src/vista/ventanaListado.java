@@ -246,7 +246,7 @@ public class ventanaListado extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Productores", jPanel2);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\nico2\\Downloads\\icons8-resultados-de-la-prueba-filled-50.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-resultados-de-la-prueba-filled-50.png"))); // NOI18N
 
         label6.setBackground(new java.awt.Color(245, 245, 245));
         label6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N

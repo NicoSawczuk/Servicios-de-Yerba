@@ -80,7 +80,6 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(245, 245, 245));
-        setPreferredSize(new java.awt.Dimension(550, 500));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -139,7 +138,7 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
         label6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label6.setText("Cancelar el servicio");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\nico2\\Downloads\\icons8-cancelar-suscripción-filled-50.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-cancelar-suscripción-filled-50.png"))); // NOI18N
 
         jLabel8.setText("Cancelar el servicio");
 

@@ -106,6 +106,7 @@ public class Controlador {
             s.setCostoTotal(costo);
             prod.agregarServicio(s);
             pres.agregarServicio(s);
+            
             this.persistencia.insertar(s);
             this.persistencia.modificar(prod);
             this.persistencia.modificar(pres);

@@ -221,7 +221,7 @@ public class ventanaAgregarPrestador extends javax.swing.JFrame {
 
         jLabel11.setText("Zonas");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\nico2\\Downloads\\icons8-agregar-administrador-filled-50.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-agregar-administrador-filled-50.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
