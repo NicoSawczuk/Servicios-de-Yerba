@@ -73,6 +73,8 @@ public class ServicioPrestador {
     
     @Override
     public String toString (){
-        return prestador.getNombre();
+        return tipoServicio.getDescripcion();
     }
+    
+
 }

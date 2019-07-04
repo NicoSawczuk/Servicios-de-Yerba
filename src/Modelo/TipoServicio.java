@@ -3,6 +3,7 @@ package Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -92,8 +93,11 @@ public class TipoServicio {
     //agregar
     
     public void agregarServicioPrestador(ServicioPrestador sp){
+        if (!serviciosPrestador.equals(sp)) {
         this.serviciosPrestador.add(sp);
         sp.agregarTipoServicio(this);
+        }
+
     }
     
     @Override

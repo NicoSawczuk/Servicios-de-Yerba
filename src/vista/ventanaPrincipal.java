@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controlador;
+import java.awt.Color;
 import javax.swing.JFrame;
 
 
@@ -25,6 +26,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
+
         
        
     }
@@ -46,100 +48,144 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         button6 = new java.awt.Button();
         button7 = new java.awt.Button();
         button8 = new java.awt.Button();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        button1.setBackground(new java.awt.Color(110, 204, 190));
+        button1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button1.setForeground(new java.awt.Color(52, 97, 78));
         button1.setLabel("Contratar un servicio");
+        button1.setPreferredSize(new java.awt.Dimension(130, 35));
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);
             }
         });
 
+        button3.setBackground(new java.awt.Color(110, 204, 190));
+        button3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button3.setForeground(new java.awt.Color(52, 97, 78));
         button3.setLabel("Cancelar un servicio");
+        button3.setPreferredSize(new java.awt.Dimension(130, 35));
         button3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button3ActionPerformed(evt);
             }
         });
 
+        button4.setBackground(new java.awt.Color(110, 204, 190));
+        button4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button4.setForeground(new java.awt.Color(52, 97, 78));
         button4.setLabel("Terminar un servicio");
+        button4.setPreferredSize(new java.awt.Dimension(130, 35));
         button4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button4ActionPerformed(evt);
             }
         });
 
+        button5.setBackground(new java.awt.Color(110, 204, 190));
+        button5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button5.setForeground(new java.awt.Color(52, 97, 78));
         button5.setLabel("Listados");
+        button5.setPreferredSize(new java.awt.Dimension(130, 35));
         button5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button5ActionPerformed(evt);
             }
         });
 
-        button6.setLabel("ABM Prestador");
+        button6.setBackground(new java.awt.Color(110, 204, 190));
+        button6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button6.setForeground(new java.awt.Color(52, 97, 78));
+        button6.setLabel("Prestadores");
+        button6.setName(""); // NOI18N
+        button6.setPreferredSize(new java.awt.Dimension(130, 35));
         button6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button6ActionPerformed(evt);
             }
         });
 
-        button7.setLabel("ABM Productor");
+        button7.setBackground(new java.awt.Color(110, 204, 190));
+        button7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button7.setForeground(new java.awt.Color(52, 97, 78));
+        button7.setLabel("Productores");
+        button7.setName(""); // NOI18N
+        button7.setPreferredSize(new java.awt.Dimension(130, 35));
         button7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button7ActionPerformed(evt);
             }
         });
 
-        button8.setLabel("ABM Tipo de Servicio");
+        button8.setBackground(new java.awt.Color(110, 204, 190));
+        button8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        button8.setForeground(new java.awt.Color(52, 97, 78));
+        button8.setLabel("Tipos de Servicios");
+        button8.setPreferredSize(new java.awt.Dimension(130, 35));
         button8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button8ActionPerformed(evt);
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\nico2\\Downloads\\matee.jpg")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(button8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(45, 45, 45)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(button7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(button3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(379, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(255, 255, 255))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(button6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        button8.getAccessibleContext().setAccessibleParent(button1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,6 +197,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         vTerminarServicio.setLocationRelativeTo(null);
         vTerminarServicio.setResizable(false);
         vTerminarServicio.setVisible(true);
+        vTerminarServicio.setSize(600, 430);
         
     }//GEN-LAST:event_button4ActionPerformed
 
@@ -161,6 +208,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         vListado.setLocationRelativeTo(null);
         vListado.setResizable(false);
         vListado.setVisible(true);
+        vListado.setSize(600, 430);
     }//GEN-LAST:event_button5ActionPerformed
 
     private void button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button6ActionPerformed
@@ -170,6 +218,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         vAgregarPrestador.setLocationRelativeTo(null);
         vAgregarPrestador.setResizable(false);
         vAgregarPrestador.setVisible(true);
+        vAgregarPrestador.setSize(620, 590);
         
     }//GEN-LAST:event_button6ActionPerformed
 
@@ -180,6 +229,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         vContratarServicio.setLocationRelativeTo(null);
         vContratarServicio.setResizable(false);
         vContratarServicio.setVisible(true);
+        vContratarServicio.setSize(600, 430);
+        
     }//GEN-LAST:event_button1ActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
@@ -189,6 +240,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         vCancelarServicio.setLocationRelativeTo(null);
         vCancelarServicio.setResizable(false);
         vCancelarServicio.setVisible(true);
+        vCancelarServicio.setSize(600, 430);
     }//GEN-LAST:event_button3ActionPerformed
 
     private void button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button7ActionPerformed
@@ -198,6 +250,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         vAgregarProductor.setLocationRelativeTo(null);
         vAgregarProductor.setResizable(false);
         vAgregarProductor.setVisible(true);
+        vAgregarProductor.setSize(630, 430);
     }//GEN-LAST:event_button7ActionPerformed
 
     private void button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button8ActionPerformed
@@ -205,7 +258,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         vAgregarTipoServicio.setLocationRelativeTo(null);
         vAgregarTipoServicio.setResizable(false);
-        vAgregarTipoServicio.setVisible(true);        
+        vAgregarTipoServicio.setVisible(true);    
+        vAgregarTipoServicio.setSize(600, 490);
     }//GEN-LAST:event_button8ActionPerformed
 
     /**
@@ -221,5 +275,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private java.awt.Button button6;
     private java.awt.Button button7;
     private java.awt.Button button8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,10 @@ package vista;
 
 import Modelo.Prestador;
 import Modelo.Productor;
+import Modelo.Servicio;
+import Modelo.TipoServicio;
 import controlador.Controlador;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -52,6 +55,9 @@ public class ventanaListado extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         listaServicios = new javax.swing.JList();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        listaPrestadoresServicios = new javax.swing.JList();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         listaProductor = new javax.swing.JList();
@@ -59,6 +65,8 @@ public class ventanaListado extends javax.swing.JFrame {
         listaHistorialPuntajes = new javax.swing.JList();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        label6 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -67,6 +75,12 @@ public class ventanaListado extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jPanel1.setMaximumSize(new java.awt.Dimension(600, 200));
+        jPanel1.setPreferredSize(new java.awt.Dimension(478, 400));
+
+        listaPrestador.setBackground(new java.awt.Color(216, 249, 225));
+        listaPrestador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         listaPrestador.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaPrestadorValueChanged(evt);
@@ -74,10 +88,12 @@ public class ventanaListado extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(listaPrestador);
 
-        jLabel1.setText("Listado de prestadores:");
+        jLabel1.setText("Listado de prestadores");
 
         jLabel4.setText("Lista de servicios");
 
+        listaServiciosPrestador.setBackground(new java.awt.Color(216, 249, 225));
+        listaServiciosPrestador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         listaServiciosPrestador.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaServiciosPrestadorValueChanged(evt);
@@ -94,32 +110,32 @@ public class ventanaListado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(73, 73, 73))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(1674, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Prestadores", jPanel1);
 
+        listaServicios.setBackground(new java.awt.Color(216, 249, 225));
+        listaServicios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         listaServicios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaServiciosValueChanged(evt);
@@ -127,7 +143,18 @@ public class ventanaListado extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(listaServicios);
 
-        jLabel3.setText("Listado de servicios existentes:");
+        jLabel3.setText("Listado de servicios existentes");
+
+        listaPrestadoresServicios.setBackground(new java.awt.Color(216, 249, 225));
+        listaPrestadoresServicios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        listaPrestadoresServicios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPrestadoresServiciosValueChanged(evt);
+            }
+        });
+        jScrollPane8.setViewportView(listaPrestadoresServicios);
+
+        jLabel5.setText("Prestadores de ese servicio");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -137,21 +164,31 @@ public class ventanaListado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(283, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8))
+                .addContainerGap(1676, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Servicios", jPanel3);
 
+        listaProductor.setBackground(new java.awt.Color(216, 249, 225));
+        listaProductor.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         listaProductor.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaProductorValueChanged(evt);
@@ -159,6 +196,8 @@ public class ventanaListado extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(listaProductor);
 
+        listaHistorialPuntajes.setBackground(new java.awt.Color(216, 249, 225));
+        listaHistorialPuntajes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         listaHistorialPuntajes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaHistorialPuntajesValueChanged(evt);
@@ -168,7 +207,7 @@ public class ventanaListado extends javax.swing.JFrame {
 
         jLabel6.setText("Historial de puntajes");
 
-        jLabel2.setText("Listado de productores:");
+        jLabel2.setText("Listado de productores");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -177,29 +216,38 @@ public class ventanaListado extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(79, 79, 79)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5))
-                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1671, 1671, 1671))
         );
 
         jTabbedPane2.addTab("Productores", jPanel2);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\nico2\\Downloads\\icons8-resultados-de-la-prueba-filled-50.png")); // NOI18N
+
+        label6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        label6.setText("Listados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,11 +257,19 @@ public class ventanaListado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane2)
                 .addGap(57, 57, 57))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(148, 148, 148))
         );
@@ -263,7 +319,14 @@ public class ventanaListado extends javax.swing.JFrame {
     }//GEN-LAST:event_listaPrestadorValueChanged
 
     private void listaServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaServiciosValueChanged
-        // TODO add your handling code here:
+        if(!this.listaServicios.isSelectionEmpty()){
+            TipoServicio s = (TipoServicio) this.listaServicios.getSelectedValue();
+            ArrayList<Prestador> pres = new ArrayList<Prestador>();
+            for (int i = 0; i < s.getServiciosPrestador().size(); i++) {
+                pres.add(s.getServiciosPrestador().get(i).getPrestador());
+            }
+            this.listaPrestadoresServicios.setListData(pres.toArray());
+        }
     }//GEN-LAST:event_listaServiciosValueChanged
 
     private void listaProductorValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaProductorValueChanged
@@ -283,6 +346,10 @@ public class ventanaListado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_listaServiciosPrestadorValueChanged
 
+    private void listaPrestadoresServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPrestadoresServiciosValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaPrestadoresServiciosValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -293,7 +360,9 @@ public class ventanaListado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -302,9 +371,12 @@ public class ventanaListado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private java.awt.Label label6;
     private javax.swing.JList listaHistorialPuntajes;
     private javax.swing.JList listaPrestador;
+    private javax.swing.JList listaPrestadoresServicios;
     private javax.swing.JList listaProductor;
     private javax.swing.JList listaServicios;
     private javax.swing.JList listaServiciosPrestador;

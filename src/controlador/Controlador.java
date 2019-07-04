@@ -81,14 +81,16 @@ public class Controlador {
         public void agregarServicioPrestador(double costo, TipoServicio tipoServicio, Prestador prestador){
             this.persistencia.iniciarTransaccion();
             try {
-            ServicioPrestador s = new ServicioPrestador(costo, tipoServicio, prestador);
-            tipoServicio.agregarServicioPrestador(s);
-            prestador.agregarServicioPrestador(s);
-            s.agregarTipoServicio(tipoServicio);
-            s.setCosto(costo);
-            this.persistencia.modificar(tipoServicio);
-            this.persistencia.modificar(prestador);
-            this.persistencia.confirmarTransaccion();
+                ServicioPrestador sp = new ServicioPrestador(costo, tipoServicio, prestador);
+ 
+                tipoServicio.agregarServicioPrestador(sp);
+                prestador.agregarServicioPrestador(sp);
+                sp.agregarTipoServicio(tipoServicio);
+                sp.setCosto(costo);
+
+                this.persistencia.modificar(tipoServicio);
+                this.persistencia.modificar(prestador);
+                this.persistencia.confirmarTransaccion();
         } catch (Exception e) {
             this.persistencia.descartarTransaccion();
             System.err.println("No se pudo agregar el Servicio");

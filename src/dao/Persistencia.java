@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package dao;
-import Modelo.Prestador;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
