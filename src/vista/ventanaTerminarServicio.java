@@ -30,6 +30,7 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
      */
     public ventanaTerminarServicio(Controlador c, JFrame vAnterior) {
         initComponents();
+        this.getContentPane().setBackground(new java.awt.Color(245,245,245));
         this.c=c;
         this.vAnterior=vAnterior;
         limpiar();
@@ -72,6 +73,8 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(245, 245, 245));
         setPreferredSize(new java.awt.Dimension(550, 350));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -141,6 +144,7 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
 
         jLabel4.setText("Productor");
 
+        label6.setBackground(new java.awt.Color(245, 245, 245));
         label6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label6.setText("Terminar el servicio");
 

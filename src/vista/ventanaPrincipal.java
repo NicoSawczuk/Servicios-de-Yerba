@@ -52,7 +52,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(245, 245, 245));
 
         button1.setBackground(new java.awt.Color(110, 204, 190));
         button1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N

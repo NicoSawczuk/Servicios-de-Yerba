@@ -66,6 +66,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setBackground(new java.awt.Color(245, 245, 245));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -141,6 +142,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
 
         jLabel12.setText("Unidad");
 
+        label6.setBackground(new java.awt.Color(245, 245, 245));
         label6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label6.setText("Agregar un nuevo tipo de servicio");
 
@@ -288,6 +290,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
     
     public ventanaAgregarTipoServicio(Controlador c, JFrame vAnterior) {
         initComponents();
+        this.getContentPane().setBackground(new java.awt.Color(245,245,245));
         this.c=c;
         this.vAnterior=vAnterior;
         limpiar();
