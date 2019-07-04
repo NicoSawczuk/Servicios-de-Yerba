@@ -162,8 +162,11 @@ public class ventanaContratarServicio extends javax.swing.JFrame {
             Productor prod = (Productor) this.comboProductores.getSelectedItem();
             ServicioPrestador sp = (ServicioPrestador) this.listaServicios.getSelectedValue();
             this.c.agregarServicioProductorPrestador(pres, prod, sp.getTipoServicio(), false, false, fechaInicio, sp.getCosto());
-         }
-        JOptionPane.showMessageDialog(null, "Servicio agregado");
+            JOptionPane.showMessageDialog(null, "Servicio agregado"); 
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione las listas");
+        }
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void comboPrestadoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboPrestadoresItemStateChanged

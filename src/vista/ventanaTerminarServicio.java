@@ -216,18 +216,22 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_listaServiciosValueChanged
 
     private void botonTerminarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarServicioActionPerformed
-        if (this.comboProductor.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null){
-            Productor p = (Productor) this.comboProductor.getSelectedItem();
-            Servicio s = (Servicio) this.listaServicios.getSelectedValue();
-            String unidad2 = txtCantidadUnidades.getText();
-            int unidades = Integer.parseInt(unidad2);
-            String puntaje = (String) this.comboPuntaje.getSelectedItem();
-            
-            
-            this.c.termiarServicio(s, puntaje, unidades);
-            JOptionPane.showMessageDialog(null, "Servicio terminado, su costo es: "+s.getCostoTotal());
+        if(this.txtCantidadUnidades.getText().isEmpty()!=true){
+            if (this.comboProductor.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null){
+                Productor p = (Productor) this.comboProductor.getSelectedItem();
+                Servicio s = (Servicio) this.listaServicios.getSelectedValue();
+                String unidad2 = txtCantidadUnidades.getText();
+                int unidades = Integer.parseInt(unidad2);
+                String puntaje = (String) this.comboPuntaje.getSelectedItem();
+
+                this.c.termiarServicio(s, puntaje, unidades);
+                JOptionPane.showMessageDialog(null, "Servicio terminado, su costo es: "+s.getCostoTotal());
          }
         limpiar();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Por favor complete todos los campos");
+        }
     }//GEN-LAST:event_botonTerminarServicioActionPerformed
 
     

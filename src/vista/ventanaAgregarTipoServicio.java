@@ -54,7 +54,6 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         botonAgregarTipoServicio = new java.awt.Button();
         botonNuevo = new java.awt.Button();
-        botonEliminar = new java.awt.Button();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaPrestadores = new javax.swing.JList();
@@ -96,13 +95,6 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         botonNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonNuevoActionPerformed(evt);
-            }
-        });
-
-        botonEliminar.setLabel("Eliminar");
-        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEliminarActionPerformed(evt);
             }
         });
 
@@ -169,9 +161,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(38, 38, 38)
-                                        .addComponent(botonAgregarTipoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(botonAgregarTipoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
@@ -180,7 +170,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel4)
                 .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,12 +179,20 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(comboUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonAgregarTipoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(106, 106, 106)
+                            .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
@@ -204,14 +202,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(24, 24, 24)
                         .addComponent(botonAsignarPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -258,33 +249,28 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void botonAgregarTipoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarTipoServicioActionPerformed
-        Unidad u = (Unidad) comboUnidad.getSelectedItem();
-        if (!this.listaTiposServicios.isSelectionEmpty()) {
-            TipoServicio s = (TipoServicio) this.listaTiposServicios.getSelectedValue();
-            this.c.editarTipoServicio(s, txtDescripcion.getText(), u);
+        if(this.txtDescripcion.getText().isEmpty()!=true){
+            Unidad u = (Unidad) comboUnidad.getSelectedItem();
+            if (!this.listaTiposServicios.isSelectionEmpty() && this.txtDescripcion.getText().isEmpty()!=true) {
+                TipoServicio s = (TipoServicio) this.listaTiposServicios.getSelectedValue();
+                this.c.editarTipoServicio(s, txtDescripcion.getText(), u);
+            }
+            else{
+                this.c.agregarTipoServicio(txtDescripcion.getText(), u);
+            }
+            limpiar();
+            this.botonAgregarTipoServicio.setEnabled(true);
         }
-        else{
-            this.c.agregarTipoServicio(txtDescripcion.getText(), u);
+        else {
+            JOptionPane.showMessageDialog(null, "Por favor complete todos los campos");
         }
-        limpiar();
-        this.botonAgregarTipoServicio.setEnabled(true);
+        
     }//GEN-LAST:event_botonAgregarTipoServicioActionPerformed
 
     private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
         //limpiar todo
         limpiar();
     }//GEN-LAST:event_botonNuevoActionPerformed
-
-    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        TipoServicio s = (TipoServicio) this.listaTiposServicios.getSelectedValue();
-        if (s != null){
-            int i = this.c.eliminarTipoServicio(s);
-            if (i!=0){
-                JOptionPane.showMessageDialog(null, "No es posible eliminar el Tipo de servicio", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            limpiar();
-        }
-    }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void listaTiposServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaTiposServiciosValueChanged
         if(!this.listaTiposServicios.isSelectionEmpty()){
@@ -301,7 +287,6 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         else{
             this.txtDescripcion.setEnabled(true);
             this.txtCosto.setEnabled(true);
-            this.botonEliminar.setEnabled(true);
             this.botonAgregarTipoServicio.setEnabled(true);
         }       
     }//GEN-LAST:event_listaTiposServiciosValueChanged
@@ -311,6 +296,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_listaPrestadoresValueChanged
 
     private void botonAsignarPrestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarPrestadorActionPerformed
+        if(this.txtCosto.getText().isEmpty()!=true){
         String costo2 = txtCosto.getText();
         double costo = Double.parseDouble(costo2);
         if (this.listaTiposServicios.getSelectedValue() != null && this.comboPrestador.getSelectedItem() != null){
@@ -319,12 +305,15 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
             this.c.agregarServicioPrestador(costo, ts, p);
             this.listaPrestadores.setListData(ts.getServiciosPrestador().toArray());
          }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Por favor complete todos los campos");
+        }
     }//GEN-LAST:event_botonAsignarPrestadorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button botonAgregarTipoServicio;
     private java.awt.Button botonAsignarPrestador;
-    private java.awt.Button botonEliminar;
     private java.awt.Button botonNuevo;
     private javax.swing.JComboBox<String> comboPrestador;
     private javax.swing.JComboBox<String> comboUnidad;

@@ -169,16 +169,20 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        if (this.comboProductores.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null && this.txtCantidadUnidades.getText() != null){
-            Productor prod = (Productor) this.comboProductores.getSelectedItem();
-            Servicio s = (Servicio) this.listaServicios.getSelectedValue();
-            String unidad2 = txtCantidadUnidades.getText();
-            int unidades = Integer.parseInt(unidad2);
-            this.c.cancelarServicio(s, this.txtRazon.getText(), unidades);
-            JOptionPane.showMessageDialog(null, "Servicio cancelado, su costo es: "+s.getCostoTotal());
+        if(this.txtCantidadUnidades.getText().isEmpty()!=true && this.txtRazon.getText().isEmpty()!=true){
+            if (this.comboProductores.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null && this.txtCantidadUnidades.getText() != null){
+                Productor prod = (Productor) this.comboProductores.getSelectedItem();
+                Servicio s = (Servicio) this.listaServicios.getSelectedValue();
+                String unidad2 = txtCantidadUnidades.getText();
+                int unidades = Integer.parseInt(unidad2);
+                this.c.cancelarServicio(s, this.txtRazon.getText(), unidades);
+                JOptionPane.showMessageDialog(null, "Servicio cancelado, su costo es: "+s.getCostoTotal());
          }
         limpiar();
-       
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Por favor complete todos los campos");
+        }
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void comboProductoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProductoresItemStateChanged
