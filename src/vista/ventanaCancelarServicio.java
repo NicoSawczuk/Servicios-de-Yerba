@@ -90,6 +90,12 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
 
         label5.setText("Productor");
 
+        txtCantidadUnidades.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadUnidadesKeyTyped(evt);
+            }
+        });
+
         comboProductores.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboProductoresItemStateChanged(evt);
@@ -118,19 +124,15 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
                     .addComponent(jScrollPane2))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(107, Short.MAX_VALUE))))
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +172,7 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         if(this.txtCantidadUnidades.getText().isEmpty()!=true && this.txtRazon.getText().isEmpty()!=true){
-            if (this.comboProductores.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null && this.txtCantidadUnidades.getText() != null){
+            if (this.comboProductores.getSelectedItem() != null && !this.listaServicios.isSelectionEmpty() && this.txtCantidadUnidades.getText() != null){
                 Productor prod = (Productor) this.comboProductores.getSelectedItem();
                 Servicio s = (Servicio) this.listaServicios.getSelectedValue();
                 String unidad2 = txtCantidadUnidades.getText();
@@ -204,6 +206,18 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_listaServiciosValueChanged
+
+    private void txtCantidadUnidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadUnidadesKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtCantidadUnidadesKeyTyped
 
     /**
      * @param args the command line arguments

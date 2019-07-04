@@ -110,6 +110,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCantidadUnidades">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCantidadUnidadesKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboProductores">
       <Properties>

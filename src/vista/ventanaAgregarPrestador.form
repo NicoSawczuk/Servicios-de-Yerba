@@ -202,12 +202,24 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCUIT">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCUITKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNroInscrip">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNroInscripKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDomicilio">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDomicilioKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRazonSocial">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRazonSocialKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboZonas">
       <Properties>
@@ -251,6 +263,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombre">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyTyped"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
       <AuxValues>

@@ -71,6 +71,18 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
 
         jLabel1.setText("Costo");
 
+        txtCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCostoKeyTyped(evt);
+            }
+        });
+
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
+            }
+        });
+
         comboUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Unidad");
@@ -299,7 +311,7 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
         if(this.txtCosto.getText().isEmpty()!=true){
         String costo2 = txtCosto.getText();
         double costo = Double.parseDouble(costo2);
-        if (this.listaTiposServicios.getSelectedValue() != null && this.comboPrestador.getSelectedItem() != null){
+        if (!this.listaTiposServicios.isSelectionEmpty() && this.comboPrestador.getSelectedItem() != null){
             Prestador p = (Prestador) this.comboPrestador.getSelectedItem();
             TipoServicio ts = (TipoServicio) this.listaTiposServicios.getSelectedValue();
             this.c.agregarServicioPrestador(costo, ts, p);
@@ -310,6 +322,30 @@ public class ventanaAgregarTipoServicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor complete todos los campos");
         }
     }//GEN-LAST:event_botonAsignarPrestadorActionPerformed
+
+    private void txtCostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCostoKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtCostoKeyTyped
+
+    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isLetter(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten números");
+        }
+    }//GEN-LAST:event_txtDescripcionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button botonAgregarTipoServicio;

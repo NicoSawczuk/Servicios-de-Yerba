@@ -104,8 +104,13 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
                 txtCantidadUnidadesActionPerformed(evt);
             }
         });
+        txtCantidadUnidades.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadUnidadesKeyTyped(evt);
+            }
+        });
 
-        label6.setText("Cantidad de unidades");
+        label6.setText("Unidad");
 
         comboPuntaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Positivo", "Negativo", "Neutro" }));
         comboPuntaje.addItemListener(new java.awt.event.ItemListener() {
@@ -140,14 +145,16 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(botonTerminarServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(comboPuntaje, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,10 +170,10 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(comboPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,7 +224,7 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
 
     private void botonTerminarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarServicioActionPerformed
         if(this.txtCantidadUnidades.getText().isEmpty()!=true){
-            if (this.comboProductor.getSelectedItem() != null && this.listaServicios.getSelectedValue() != null){
+            if (this.comboProductor.getSelectedItem() != null && !this.listaServicios.isSelectionEmpty()){
                 Productor p = (Productor) this.comboProductor.getSelectedItem();
                 Servicio s = (Servicio) this.listaServicios.getSelectedValue();
                 String unidad2 = txtCantidadUnidades.getText();
@@ -233,6 +240,18 @@ public class ventanaTerminarServicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor complete todos los campos");
         }
     }//GEN-LAST:event_botonTerminarServicioActionPerformed
+
+    private void txtCantidadUnidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadUnidadesKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtCantidadUnidadesKeyTyped
 
     
     

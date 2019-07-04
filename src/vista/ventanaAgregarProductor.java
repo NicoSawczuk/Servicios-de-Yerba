@@ -84,6 +84,30 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
 
         label7.setText("Productores");
 
+        txtNroInscrip.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNroInscripKeyTyped(evt);
+            }
+        });
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDomicilioKeyTyped(evt);
+            }
+        });
+
+        txtRazonSocial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRazonSocialKeyTyped(evt);
+            }
+        });
+
         label1.setText("CUIT");
 
         label2.setText("Razon Social");
@@ -107,11 +131,23 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
             }
         });
 
+        txtCUIT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCUITKeyTyped(evt);
+            }
+        });
+
         label9.setAlignment(java.awt.Label.RIGHT);
         label9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label9.setText("Nombre");
 
         label10.setText("Agregar Productor");
+
+        txtCantHect.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantHectKeyTyped(evt);
+            }
+        });
 
         listaProductor.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -264,6 +300,78 @@ public class ventanaAgregarProductor extends javax.swing.JFrame {
             this.botonGuardar.setEnabled(true);
         }
     }//GEN-LAST:event_listaProductorValueChanged
+
+    private void txtCUITKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCUITKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtCUITKeyTyped
+
+    private void txtNroInscripKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroInscripKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtNroInscripKeyTyped
+
+    private void txtCantHectKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantHectKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtCantHectKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isLetter(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten números");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtRazonSocialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonSocialKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isLetter(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten números");
+        }
+    }//GEN-LAST:event_txtRazonSocialKeyTyped
+
+    private void txtDomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDomicilioKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isLetter(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten números");
+        }
+    }//GEN-LAST:event_txtDomicilioKeyTyped
 
     /**
      * @param args the command line arguments

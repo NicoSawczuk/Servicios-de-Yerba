@@ -145,8 +145,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCosto">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCostoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescripcion">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescripcionKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboUnidad">
       <Properties>
