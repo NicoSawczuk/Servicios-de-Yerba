@@ -59,16 +59,19 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
-        botonCancelar = new java.awt.Button();
-        label5 = new java.awt.Label();
+        jLabel3 = new javax.swing.JLabel();
         txtCantidadUnidades = new javax.swing.JTextField();
         comboProductores = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaServicios = new javax.swing.JList();
-        label6 = new java.awt.Label();
         txtRazon = new javax.swing.JTextField();
+        botonCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        jLabel3.setText("Productor");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -76,19 +79,6 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-
-        label1.setText("Servicios contratados");
-
-        label2.setText("Razón de cancelación");
-
-        botonCancelar.setLabel("Cancelar servicio");
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
-            }
-        });
-
-        label5.setText("Productor");
 
         txtCantidadUnidades.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -109,7 +99,26 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listaServicios);
 
-        label6.setText("Cantidad de unidades");
+        txtRazon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRazonKeyTyped(evt);
+            }
+        });
+
+        botonCancelar.setText("Cancelar servicio");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Servicios contratados");
+
+        jLabel2.setText("Productor");
+
+        jLabel4.setText("Unidad");
+
+        jLabel5.setText("Razón de cancelación");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,48 +126,50 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(comboProductores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(comboProductores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtRazon)
+                        .addComponent(botonCancelar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(comboProductores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtCantidadUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonCancelar)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,6 +180,50 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
         this.vAnterior.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
+
+    private void comboProductoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProductoresItemStateChanged
+         if (this.comboProductores.getSelectedItem() != null){
+            Productor p = (Productor) this.comboProductores.getSelectedItem();
+            this.listaServicios.setListData(this.c.listarServiciosEnProceso(p).toArray());
+        }
+    }//GEN-LAST:event_comboProductoresItemStateChanged
+
+    private void listaServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaServiciosValueChanged
+        if(!this.listaServicios.isSelectionEmpty()){
+            Productor p = (Productor) this.comboProductores.getSelectedItem();
+            Servicio s = (Servicio) this.listaServicios.getSelectedValue();
+            if (s.getTipo()==1){
+                this.jLabel4.setText("Cantidad kilogramos:");
+            }
+            else{
+                this.jLabel4.setText("Cantidad hectareas:");
+            }
+        }
+    }//GEN-LAST:event_listaServiciosValueChanged
+
+    private void txtCantidadUnidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadUnidadesKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isDigit(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
+        }
+    }//GEN-LAST:event_txtCantidadUnidadesKeyTyped
+
+    private void txtRazonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonKeyTyped
+        char car = evt.getKeyChar();
+        if (Character.isLetter(car) || Character.isSpaceChar(car)){
+            
+        }
+        else{
+            evt.consume();
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(rootPane, "No se permiten números");
+        }
+    }//GEN-LAST:event_txtRazonKeyTyped
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         if(this.txtCantidadUnidades.getText().isEmpty()!=true && this.txtRazon.getText().isEmpty()!=true){
@@ -187,51 +242,20 @@ public class ventanaCancelarServicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonCancelarActionPerformed
 
-    private void comboProductoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProductoresItemStateChanged
-         if (this.comboProductores.getSelectedItem() != null){
-            Productor p = (Productor) this.comboProductores.getSelectedItem();
-            this.listaServicios.setListData(this.c.listarServiciosEnProceso(p).toArray());
-        }
-    }//GEN-LAST:event_comboProductoresItemStateChanged
-
-    private void listaServiciosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaServiciosValueChanged
-        if(!this.listaServicios.isSelectionEmpty()){
-            Productor p = (Productor) this.comboProductores.getSelectedItem();
-            Servicio s = (Servicio) this.listaServicios.getSelectedValue();
-            if (s.getTipo()==1){
-                this.label6.setText("Cantidad kilogramos:");
-            }
-            else{
-                this.label6.setText("Cantidad hectareas:");
-            }
-        }
-    }//GEN-LAST:event_listaServiciosValueChanged
-
-    private void txtCantidadUnidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadUnidadesKeyTyped
-        char car = evt.getKeyChar();
-        if (Character.isDigit(car)){
-            
-        }
-        else{
-            evt.consume();
-            getToolkit().beep();
-            JOptionPane.showMessageDialog(rootPane, "No se permiten letras");
-        }
-    }//GEN-LAST:event_txtCantidadUnidadesKeyTyped
-
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button botonCancelar;
+    private javax.swing.JButton botonCancelar;
     private javax.swing.JComboBox comboProductores;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label5;
-    private java.awt.Label label6;
     private javax.swing.JList listaServicios;
     private javax.swing.JTextField txtCantidadUnidades;
     private javax.swing.JTextField txtRazon;
